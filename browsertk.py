@@ -1,13 +1,12 @@
 from tkinter import *
 from tkinter.ttk import *
-import webbrowser
-import re
-
-
 
 def open_browser():
+	import webbrowser
+	import re
+	
 	global Buscador
-	Buscador = Toplevel(ventana)
+	Buscador = Toplevel()
 	Buscador.title("Buscador")
 	Buscador.geometry("350x40")
 	Buscador.resizable(0,0)
@@ -30,7 +29,7 @@ def open_browser():
 	
 
 	global image_enter
-	image_enter = PhotoImage(file = 'enter.png')
+	image_enter = PhotoImage(file = r'./iconos/enter.png')
 	image_enter = image_enter.subsample(25,25)
 
 	
@@ -46,4 +45,3 @@ def open_browser():
 
 	search_input.bind('<Return>', fun_enter)
 	
-	ventana.mainloop()
