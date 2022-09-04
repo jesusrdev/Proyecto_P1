@@ -4,6 +4,7 @@ from unicodedata import name
 from Fuente_Texto import Fuentes 
 from calculator import open_calculator
 from PIL import ImageTk, Image
+from Lapiz import Paint
 
 ventana=Tk()    
 ventana.title("Pizarra Virtual")
@@ -11,6 +12,7 @@ ventana.geometry('500x250')
 
 #-------------IMAGENES--------------------
 imagen_engranaje = PhotoImage(file = r'./iconos/icono-engranaje.png')
+imagen_lapiz = PhotoImage(file = r'./iconos/icono-lapiz.png')
 
 icono_file_drive = PhotoImage(file = r'./iconos/icono-drive.png')
 icono_file_visualizar = PhotoImage(file = r'./iconos/icono-visualizar.png')
@@ -33,6 +35,8 @@ icono_window_newwindow = PhotoImage(file = r'./iconos/icono-window.png')
 
 #--------------CONTADORES----------------
 contador_opciones = 0
+contador_lapiz = 0
+
 contador_file = 0
 contador_edit = 0
 contador_options = 0
@@ -70,6 +74,13 @@ def funcion_opciones():
     if contador_opciones == 2 :
         contador_opciones = 0
         etiqueta_menu_opciones.pack_forget()
+
+#----------FUNCIONES DE LAPIZ--------------
+def funcion_lapiz():
+    global contador_lapiz
+    contador_lapiz = contador_lapiz + 1
+    Paint()
+#   DAR USO AL CONTADOR - SINO, BORRAR    
 
 #--------------FUNCIONES DE OPCIONES -----------
 def funcion_file ():
@@ -179,7 +190,7 @@ def funcion_herramientas ():
         boton_calculadora = Button(etiqueta_menu_tools, image = icono_tools_calculadora,command = open_calculator, borderwidth = 0)
         boton_calculadora.pack(side = LEFT) 
 
-        boton_internet = Button(etiqueta_menu_tools, image = icono_tools_internet, borderwidth = 0)
+        boton_internet = Button(etiqueta_menu_tools, image = icono_tools_internet, command = open_browser ,borderwidth = 0)
         boton_internet.pack(side = LEFT)
 
         boton_recortar = Button(etiqueta_menu_tools, image = icono_tools_recortar, borderwidth = 0)
@@ -299,5 +310,9 @@ etiqueta_opciones.pack(fill=X)
 
 boton_engranaje=Button(etiqueta_opciones, image = imagen_engranaje, command = funcion_opciones, borderwidth = 0)
 boton_engranaje.pack(side = LEFT)
+
+boton_lapiz=Button(etiqueta_opciones, image = imagen_lapiz, command = funcion_lapiz, borderwidth = 0)
+boton_lapiz.pack(side = RIGHT)
+
 
 ventana.mainloop()
