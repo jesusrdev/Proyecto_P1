@@ -4,7 +4,9 @@ from unicodedata import name
 from Fuente_Texto import Fuentes 
 from calculator import open_calculator
 from PIL import ImageTk, Image
+from Funcion_buscador import open_browser
 from Lapiz import Paint
+
 
 ventana=Tk()    
 ventana.title("Pizarra Virtual")
