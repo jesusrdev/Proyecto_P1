@@ -24,10 +24,6 @@ def recortador_pantalla(ventana,my_canvas):
 
             im1 = ImageTk.PhotoImage(im1)
 
-            # global my_canvas
-            # my_canvas = Canvas(top, width= (coordenadas[2]), heigh= (coordenadas[3]), bg="white")
-            # my_canvas.pack()
-
             # Add the image in the canvas widget
             image1 = Label(my_canvas, image=im1)
             image1.image = im1
@@ -43,9 +39,6 @@ def recortador_pantalla(ventana,my_canvas):
     ventana_transparente.attributes('-alpha',0.1)
     ventana_transparente.attributes('-fullscreen', True)
     ventana_transparente.bind("<Button-1>", get_event)
-
-
-
 
 
 # Define a function to take the screenshot
