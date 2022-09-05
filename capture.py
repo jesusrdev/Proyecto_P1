@@ -1,9 +1,9 @@
 from tkinter import *
 import pyautogui
 from PIL import ImageTk
+import time
 
-
-def recortador_pantalla():
+def recortador_pantalla(ventana,my_canvas):
     ventana.iconify()
 
     global coordenadas
@@ -32,9 +32,10 @@ def recortador_pantalla():
             image1 = Label(my_canvas, image=im1)
             image1.image = im1
 
-            my_canvas.create_ventanadow(0, 0, ventanadow=image1, anchor=NW)       
+            my_canvas.create_window(0, 0, window=image1, anchor=NW)       
 
             coordenadas.clear()
+            ventana.deiconify()
 
 
     # Ventana Transparente
@@ -48,11 +49,15 @@ def recortador_pantalla():
 
 
 # Define a function to take the screenshot
-def take_screenshot():
-    im1 = pyautogui.screenshot()
+def take_screenshot(ventana,my_canvas):
+    ventana.iconify()
+    time.sleep(0.5)
+    altura_pantalla = ventana.winfo_screenheight()
+    ancho_pantalla = ventana.winfo_screenwidth()
+    im1 = pyautogui.screenshot(region = (0,0,ancho_pantalla,altura_pantalla))
 
     # Abrir nueva ventana con la imagen
-    top = Toplevel(ventana)
+    # top = Toplevel(ventana)
     im1 = ImageTk.PhotoImage(im1)
 
     # global my_canvas
@@ -63,9 +68,6 @@ def take_screenshot():
     image1 = Label(my_canvas, image=im1)
     image1.image = im1
 
-    my_canvas.create_ventanadow(0, 0, ventanadow=image1, anchor=NW)       
+    my_canvas.create_window(0, 0, window=image1, anchor=NW)     
 
-    coordenadas.clear()
-
-
-# ventana.mainloop()
+    ventana.deiconify()
